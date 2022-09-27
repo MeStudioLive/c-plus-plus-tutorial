@@ -1,19 +1,28 @@
 #include <iostream>
 using namespace std;
 
-class One
+class TargetBoy;
+
+class TargetGirl
 {
-	int x = 123;
-	friend void myfn(One);
+	int mobile = 123;
+	friend int side_girl(TargetGirl, TargetBoy);
 };
 
-void myfn(One o)
+class TargetBoy
 {
-	cout << o.x;
-}
+	int mobile = 456;
+	friend int side_girl(TargetGirl, TargetBoy);
+};
+
+int side_girl(TargetGirl tg, TargetBoy tb)
+{
+	cout << tg.mobile << "," << tb.mobile;
+};
 
 int main()
 {
-	One o;
-	myfn(o);
+	TargetGirl tg;
+	TargetBoy tb;
+	side_girl(tg, tb);
 }
